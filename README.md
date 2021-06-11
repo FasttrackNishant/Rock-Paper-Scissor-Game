@@ -1,2 +1,2 @@
 # Rock-Paper-Scissor-Game
-This is the simple Rock-Paper-Seasor Game build in C Programming language
+This is the simple Rock-Paper-Scissor Game build in C Programming language
