@@ -10,29 +10,11 @@ int logic(char you, char comp)
         return 0;
     }
 
-    if (you == 's' && comp == 'r')
+    if ((you == 'S' && comp == 'R') || (you == 'P' && comp == 'S') || (you == 'R' && comp == 'P'))
     {
         return -1;
     }
-    else if (you == 'r' && comp == 's')
-    {
-        return 1;
-    }
-
-    if (you == 's' && comp == 'p')
-    {
-        return 1;
-    }
-    else if (you == 'p' && comp == 's')
-    {
-        return -1;
-    }
-
-    if (you == 'r' && comp == 'p')
-    {
-        return -1;
-    }
-    else if (you == 'p' && comp == 'r')
+    else if ((you == 'R' && comp == 'S') || (you == 'S' && comp == 'P') || (you == 'P' && comp == 'R'))
     {
         return 1;
     }
@@ -42,38 +24,53 @@ int main()
 {
     char you, comp;
     srand(time(0));
-    int number = rand()%100 + 1;
+    int number = rand() % 3 + 1;
 
-    if (number <= 33)
+    if (number == 1)
     {
-        comp = 'r';
+        comp = 'R';
     }
-    else if (number > 33 && number <= 66)
+    else if (number == 2)
     {
-        comp = 's';
+        comp = 'S';
     }
-    else
+    else if (number == 3)
     {
-        comp = 'p';
+        comp = 'P';
     }
     printf("Hey! Hello! Welcome to my GAMING World !\n");
-    printf("Enter 'r' for 'Rock' , 'p' for 'Paper' , 'S' for 'Seasor' \n");
+    printf("Enter the alphabet :- \ni.  'R' for 'Rock'\nii. 'P' for 'Paper'\niii.'S' for 'Scissor' \n");
     scanf("%c", &you);
-  
-   int  result = logic(you, comp);
-    printf("You have chose %c and comp has chose %c \n", you, comp);
+
+    int result = logic(you, comp);
+    printf("You have chosen %c and your Opponent has chosen %c \n", you, comp);
+
+    if (result == 0 || result == 1 || result == -1)
+    {
+        printf("The result of the Game is :- \n");
+    }
 
     if (result == 0)
     {
-        printf("The game is Draw!!");
+        printf("The game is Draw!!Please replay!");
     }
+
     else if (result == 1)
     {
-        printf("Congratulations ! You won the match!!");
+        printf("Congratulations ! You won the match..Visit Again!");
     }
-    else if(result == -1)
+
+    else if (result == -1)
     {
-        printf("You lost the match!!");
+        printf("You lost the match!!Please replay !");
+    }
+    else
+    {
+        printf("Invalid Input! Please retry!");
+    }
+    if (you >= 'a' && you <= 'z')
+    {
+        printf("\nEnter the letters in Uppercase");
     }
 
     return 0;
