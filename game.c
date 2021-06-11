@@ -1,14 +1,8 @@
 #include <stdio.h>
-/*  sr  st p 
-sr sr  
-st  st 
-p   p
+#include <stdlib.h>
+#include <time.h>
 
-                st   p  
-p  p    st    */
-
-
- int logic(char you, char comp)
+int logic(char you, char comp)
 {
 
     if (you == comp)
@@ -16,46 +10,71 @@ p  p    st    */
         return 0;
     }
 
+    if (you == 's' && comp == 'r')
+    {
+        return -1;
+    }
+    else if (you == 'r' && comp == 's')
+    {
+        return 1;
+    }
 
-   if (you=='sr' &&  comp =='st')
-   {
-       return -1;
-   }
-   else if (you=='st' &&  comp =='sr')
-   {
-      return 1;
-   }
+    if (you == 's' && comp == 'p')
+    {
+        return 1;
+    }
+    else if (you == 'p' && comp == 's')
+    {
+        return -1;
+    }
 
-
-   if (you=='sr' &&  comp =='p')
-   {
-       return 1;
-   }
-   else if (you=='p' &&  comp =='sr')
-   {
-      return -1;
-   }
-
-
-   if (you=='st' &&  comp =='p')
-   {
-       return 1;
-   }
-   else if (you=='p' &&  comp =='st')
-   {
-      return -1;
-   }
-   
+    if (you == 'r' && comp == 'p')
+    {
+        return -1;
+    }
+    else if (you == 'p' && comp == 'r')
+    {
+        return 1;
+    }
 }
 
 int main()
 {
     char you, comp;
-    printf("Hey! Hello! Welcome to my GAMING World !\n");
-    printf("Enter 'st' for 'Stone' , 'p' for 'Paper' , 'sr' for 'Seasor' \n");
-    scanf("%c", &you);
+    srand(time(0));
+    int number = rand()%100 + 1;
 
-    int logic(you, comp);
+    if (number <= 33)
+    {
+        comp = 'r';
+    }
+    else if (number > 33 && number <= 66)
+    {
+        comp = 's';
+    }
+    else
+    {
+        comp = 'p';
+    }
+    printf("Hey! Hello! Welcome to my GAMING World !\n");
+    printf("Enter 'r' for 'Rock' , 'p' for 'Paper' , 'S' for 'Seasor' \n");
+    scanf("%c", &you);
+  
+   int  result = logic(you, comp);
+    printf("You have chose %c and comp has chose %c \n", you, comp);
+
+    if (result == 0)
+    {
+        printf("The game is Draw!!");
+    }
+    else if (result == 1)
+    {
+        printf("Congratulations ! You won the match!!");
+    }
+    else if(result == -1)
+    {
+        printf("You lost the match!!");
+    }
 
     return 0;
 }
